@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInput : MonoBehaviour
 {
-    public Camera[] cameras;
-
     // Use this for initialization
     void Start()
     {
