@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
+    [Header("Randomise Terrain")]
     public GameObject[] terrain;
     private int randomTerrain;
     private bool terrainDone;
 
-    // Use this for initialization
     void Start()
     {
         terrainDone = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         RandomiseTerrain();
     }
 
+    #region Randomise Terrain
     void RandomiseTerrain()
     {
         if (terrainDone == false)
@@ -49,4 +49,7 @@ public class Tile : MonoBehaviour
             terrainDone = true;
         }
     }
+    #endregion
+
+
 }

@@ -5,28 +5,38 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInput : MonoBehaviour
 {
-    // Use this for initialization
     void Start()
     {
         Cursor.visible = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Shortcuts();
     }
 
+    #region Shortcuts
     void Shortcuts()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
 
-        if(Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.F1))
         {
             SceneManager.LoadScene("Game");
         }
     }
+    #endregion
+
+    #region OnTrigger
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pickup"))
+        {
+            other.transform.parent.gameObject.SetActive(false);
+        }
+    }
+    #endregion
 }
