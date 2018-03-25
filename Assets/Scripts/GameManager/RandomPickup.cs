@@ -6,8 +6,8 @@ public class RandomPickup : MonoBehaviour
 {
     [Header("Randomise Pickup")]
     public GameObject[] pickups;
+    public List<GameObject> prevPickups = new List<GameObject>();
     private int randomPickup;
-    private int currentPickup;
     private bool pickupDone;
 
     void Start()
@@ -29,21 +29,21 @@ public class RandomPickup : MonoBehaviour
         {
             randomPickup = Random.Range(0,6);
 
-            if (randomPickup != currentPickup)
+            // IF prevPickups List DOES NOT Contain randomPickup from pickups Array THEN
+            if (!prevPickups.Contains(pickups[randomPickup]))
             {
                 pickups[randomPickup].SetActive(true);
 
                 pickupDone = true;
             }
         }
-
     }
 
     void RandomNewPickup()
     {
         if (pickups[randomPickup].activeSelf == false)
         {
-            currentPickup = randomPickup;
+            prevPickups.Add(pickups[randomPickup]);
 
             pickupDone = false;
 
