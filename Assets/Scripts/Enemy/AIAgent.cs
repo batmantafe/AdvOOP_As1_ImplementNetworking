@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
+
 public class AIAgent : MonoBehaviour
 {
-    public Transform player;
+    public Transform target;
 
     private NavMeshAgent nav;
     
@@ -21,10 +23,9 @@ public class AIAgent : MonoBehaviour
 
     void NavTarget()
     {
-        if (player != null)
+        if (target != null)
         {
-            // Set destination to Player's position
-            nav.SetDestination(player.position);
+            nav.SetDestination(target.position);
         }
     }
 }
