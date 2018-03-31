@@ -8,6 +8,7 @@ public class Player1Input : MonoBehaviour
     public Camera player1Camera;
 
     public GameObject[] enemyTargets;
+    public GameObject[] enemySelectHighlight;
 
     private int enemySelection;
 
@@ -16,6 +17,8 @@ public class Player1Input : MonoBehaviour
         Cursor.visible = true;
 
         enemySelection = 0;
+
+        enemySelectHighlight[enemySelection].SetActive(true);
     }
 
 
@@ -69,16 +72,46 @@ public class Player1Input : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             enemySelection = 0;
+
+            for (int i = 0; i < enemySelectHighlight.Length; i++)
+            {
+                enemySelectHighlight[i].SetActive(false);
+
+                if (i == enemySelection)
+                {
+                    enemySelectHighlight[i].SetActive(true);
+                }
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             enemySelection = 1;
+
+            for (int i = 0; i < enemySelectHighlight.Length; i++)
+            {
+                enemySelectHighlight[i].SetActive(false);
+
+                if (i == enemySelection)
+                {
+                    enemySelectHighlight[i].SetActive(true);
+                }
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             enemySelection = 2;
+
+            for (int i = 0; i < enemySelectHighlight.Length; i++)
+            {
+                enemySelectHighlight[i].SetActive(false);
+
+                if (i == enemySelection)
+                {
+                    enemySelectHighlight[i].SetActive(true);
+                }
+            }
         }
     }
 }
