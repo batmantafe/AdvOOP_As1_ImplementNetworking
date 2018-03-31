@@ -47,7 +47,7 @@ public class Player1Input : MonoBehaviour
 
     void MouseLeftClick()
     {
-        RaycastHit clickedOn; // to identify what our raycast hits
+        RaycastHit clickedOn;
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -73,44 +73,33 @@ public class Player1Input : MonoBehaviour
         {
             enemySelection = 0;
 
-            for (int i = 0; i < enemySelectHighlight.Length; i++)
-            {
-                enemySelectHighlight[i].SetActive(false);
-
-                if (i == enemySelection)
-                {
-                    enemySelectHighlight[i].SetActive(true);
-                }
-            }
+            ForLoopEnemyHighlight();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             enemySelection = 1;
 
-            for (int i = 0; i < enemySelectHighlight.Length; i++)
-            {
-                enemySelectHighlight[i].SetActive(false);
-
-                if (i == enemySelection)
-                {
-                    enemySelectHighlight[i].SetActive(true);
-                }
-            }
+            ForLoopEnemyHighlight();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             enemySelection = 2;
 
-            for (int i = 0; i < enemySelectHighlight.Length; i++)
-            {
-                enemySelectHighlight[i].SetActive(false);
+            ForLoopEnemyHighlight();
+        }
+    }
 
-                if (i == enemySelection)
-                {
-                    enemySelectHighlight[i].SetActive(true);
-                }
+    void ForLoopEnemyHighlight()
+    {
+        for (int i = 0; i < enemySelectHighlight.Length; i++)
+        {
+            enemySelectHighlight[i].SetActive(false);
+
+            if (i == enemySelection)
+            {
+                enemySelectHighlight[i].SetActive(true);
             }
         }
     }
