@@ -58,11 +58,18 @@ public class Player1Input : MonoBehaviour
             {
                 Transform otherObject = clickedOn.transform;
 
+                Debug.Log(clickedOn.point);
+
                 if (otherObject.gameObject.name == "Street")
                 {
-                    Debug.Log(clickedOn.point);
+                    //Debug.Log(clickedOn.point);
 
                     enemyTargets[enemySelection].transform.position = clickedOn.point;
+                }
+
+                if (otherObject.gameObject.name == "Radar")
+                {
+                    enemyTargets[enemySelection].transform.position = new Vector3(clickedOn.point.x, 0.5f, clickedOn.point.z);
                 }
             }
         }
