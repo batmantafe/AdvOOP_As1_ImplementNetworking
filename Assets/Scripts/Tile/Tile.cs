@@ -26,22 +26,22 @@ public class Tile : MonoBehaviour
         {
             randomTerrain = Random.Range(0,10);
             
-            // Building (0-1) 20%
-            if (randomTerrain <= 1)
+            // Building (0) 10%
+            if (randomTerrain == 0)
             {
                 terrain[0].SetActive(true);
             }
             
-            // Street (2-5) 40%
+            // Street (1-3) 30%
 
-            // Ruin TOP (6-7) 20%
-            if (randomTerrain == 6 || randomTerrain == 7)
+            // Ruin TOP (4-6) 30%
+            if (randomTerrain >= 4 && randomTerrain <= 6)
             {
                 terrain[1].SetActive(true);
             }
 
-            // Ruin RIGHT (8-9) 20%
-            if (randomTerrain >= 8)
+            // Ruin RIGHT (7-9) 30%
+            if (randomTerrain >= 7 && randomTerrain <= 9)
             {
                 terrain[2].SetActive(true);
             }
