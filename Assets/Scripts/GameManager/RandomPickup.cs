@@ -6,7 +6,7 @@ public class RandomPickup : MonoBehaviour
 {
     [Header("Randomise Pickup")]
     public GameObject[] pickups;
-    public List<GameObject> prevPickups = new List<GameObject>();
+    private List<GameObject> prevPickups = new List<GameObject>();
     private int randomPickup;
     private bool pickupDone;
 
@@ -22,7 +22,7 @@ public class RandomPickup : MonoBehaviour
         RandomNewPickup();
     }
 
-    #region
+    #region Randomise Pickups
     void RandomisePickup()
     {
         if (pickupDone == false)

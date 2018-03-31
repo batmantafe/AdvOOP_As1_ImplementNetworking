@@ -20,7 +20,7 @@ public class Player2Input : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            SceneManager.LoadScene("Menu");
         }
 
         if (Input.GetKeyDown(KeyCode.F1))
