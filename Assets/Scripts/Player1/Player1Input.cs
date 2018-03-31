@@ -1,25 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player1Input : MonoBehaviour
 {
     public Camera player1Camera;
 
-    public GameObject enemy1Target;
+    public GameObject[] enemyTargets;
 
-    public Transform moveTo;
+    private int enemySelection;
 
     void Start()
     {
         Cursor.visible = true;
+
+        enemySelection = 0;
     }
 
 
     void Update()
     {
+        Shortcuts();
+
+        EnemySelect();
         MouseLeftClick();
     }
+
+    #region Shortcuts
+    void Shortcuts()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            SceneManager.LoadScene("Game");
+        }
+    }
+    #endregion
 
     void MouseLeftClick()
     {
@@ -27,8 +48,6 @@ public class Player1Input : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            Debug.Log("Player1 Clicks!");
-
             Ray ray = player1Camera.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out clickedOn))
@@ -39,9 +58,27 @@ public class Player1Input : MonoBehaviour
                 {
                     Debug.Log(clickedOn.point);
 
-                    enemy1Target.transform.position = clickedOn.point;
+                    enemyTargets[enemySelection].transform.position = clickedOn.point;
                 }
             }
+        }
+    }
+
+    void EnemySelect()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            enemySelection = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            enemySelection = 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            enemySelection = 2;
         }
     }
 }

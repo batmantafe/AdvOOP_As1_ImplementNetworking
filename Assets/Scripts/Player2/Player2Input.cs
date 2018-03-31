@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerInput : MonoBehaviour
+public class Player2Input : MonoBehaviour
 {
     void Start()
     {
