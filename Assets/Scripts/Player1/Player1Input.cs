@@ -10,6 +10,8 @@ public class Player1Input : MonoBehaviour
     public GameObject[] enemyTargets;
     public GameObject[] enemySelectHighlight;
 
+    public GameObject beam;
+
     private int enemySelection;
 
     void Start()
@@ -28,6 +30,8 @@ public class Player1Input : MonoBehaviour
 
         EnemySelect();
         MouseLeftClick();
+
+        Shoot();
     }
 
     #region Shortcuts
@@ -62,8 +66,6 @@ public class Player1Input : MonoBehaviour
 
                 if (otherObject.gameObject.name == "Street")
                 {
-                    //Debug.Log(clickedOn.point);
-
                     enemyTargets[enemySelection].transform.position = clickedOn.point;
                 }
 
@@ -115,5 +117,36 @@ public class Player1Input : MonoBehaviour
     }
     #endregion
 
+    #region OrbitalStrike!
+    void Shoot()
+    {
+        RaycastHit shotAt;
 
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            Ray ray = player1Camera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out shotAt))
+            {
+                //Transform shotWhere = shotAt.transform;
+
+                Vector3 shotSpot = new Vector3(shotAt.point.x, 150.5f,shotAt.point.z);
+
+                //Debug.Log(shotAt.point);
+
+                Instantiate(beam, shotSpot, Quaternion.identity);
+
+                /*if (otherObject.gameObject.name == "Street")
+                {
+                    enemyTargets[enemySelection].transform.position = clickedOn.point;
+                }
+
+                if (otherObject.gameObject.name == "Radar")
+                {
+                    enemyTargets[enemySelection].transform.position = new Vector3(clickedOn.point.x, 0.5f, clickedOn.point.z);
+                }*/
+            }
+        }
+    }
+    #endregion
 }
