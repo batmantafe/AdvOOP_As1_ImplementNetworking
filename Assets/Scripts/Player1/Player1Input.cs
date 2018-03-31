@@ -45,6 +45,7 @@ public class Player1Input : MonoBehaviour
     }
     #endregion
 
+    #region Moving Enemies
     void MouseLeftClick()
     {
         RaycastHit clickedOn;
@@ -66,7 +67,9 @@ public class Player1Input : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    #region Selecting the Enemy with Numbers
     void EnemySelect()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -103,4 +106,7 @@ public class Player1Input : MonoBehaviour
             }
         }
     }
+    #endregion
+
+
 }
