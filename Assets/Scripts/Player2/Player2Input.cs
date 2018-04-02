@@ -8,9 +8,12 @@ using UnityEngine.Networking;
 public class Player2Input : NetworkBehaviour
 {
     public GameObject body;
+
     private MouseLook player2MouseLook;
     private Movement player2Movement;
     private Vector3 spawn1;
+
+    private Player1Input player1Input;
 
     void Start()
     {
@@ -59,6 +62,8 @@ public class Player2Input : NetworkBehaviour
         {
             camera.enabled = true;
             audioListener.enabled = true;
+
+            
         }
 
         if (!isLocalPlayer)
@@ -86,6 +91,9 @@ public class Player2Input : NetworkBehaviour
 
             camera.orthographic = true;
             camera.orthographicSize = 91;
+
+            player1Input = GetComponent<Player1Input>();
+            player1Input.enabled = true;
         }
 
         

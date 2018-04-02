@@ -18,9 +18,13 @@ public class Player1Input : MonoBehaviour
     {
         Cursor.visible = true;
 
+        FindEnemies();
+
         enemySelection = 0;
 
-        enemySelectHighlight[enemySelection].SetActive(true);
+        enemySelectHighlight[enemySelection].GetComponent<MeshRenderer>().enabled = true;
+
+        ForLoopEnemyHighlight();
     }
 
 
@@ -46,6 +50,19 @@ public class Player1Input : MonoBehaviour
         {
             SceneManager.LoadScene("Game");
         }
+    }
+    #endregion
+
+    #region Networking: Finding Enemy Targets and Enemy Godrays
+    void FindEnemies()
+    {
+        enemyTargets[0] = GameObject.Find("Target (Enemy 1)");
+        enemyTargets[1] = GameObject.Find("Target (Enemy 2)");
+        enemyTargets[2] = GameObject.Find("Target (Enemy 3)");
+
+        enemySelectHighlight[0] = GameObject.Find("Godray 1");
+        enemySelectHighlight[1] = GameObject.Find("Godray 2");
+        enemySelectHighlight[2] = GameObject.Find("Godray 3");
     }
     #endregion
 
@@ -107,11 +124,11 @@ public class Player1Input : MonoBehaviour
     {
         for (int i = 0; i < enemySelectHighlight.Length; i++)
         {
-            enemySelectHighlight[i].SetActive(false);
+            enemySelectHighlight[i].GetComponent<MeshRenderer>().enabled = false;
 
             if (i == enemySelection)
             {
-                enemySelectHighlight[i].SetActive(true);
+                enemySelectHighlight[i].GetComponent<MeshRenderer>().enabled = true;
             }
         }
     }
